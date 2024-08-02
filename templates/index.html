@@ -52,10 +52,9 @@
             // Credenciais corretas
             const validEmail = 'SENAIDEV@gmail.com';
             const validPassword = 'dev123';
-
             if (email === validEmail && password === validPassword) {
                 // Redireciona para a próxima página
-                window.location.href = '/templates/pedidos.html';
+                window.location.href = "/pedidos"
             } else {
                 // Exibe mensagem de erro
                 errorMessage.textContent = 'Cadastro ou senha inválidos. Tente novamente.';
