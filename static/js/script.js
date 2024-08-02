@@ -1,20 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
+     // Nome da conta logada
+     const nomeConta = "Alex"; // Substitua pelo nome real da conta logada
+
+     // Atualiza o texto do campo com o ID "nome"
+     const nomeElement = document.getElementById('nome');
+     if (nomeElement) {
+         nomeElement.textContent = nomeConta;
+     }
+
     const cardData = [
-        { title: "Card 1", content: "Conteúdo do card 1.", status: "finished" },
-        { title: "Card 2", content: "Conteúdo do card 2.", status: "most-urgent" },
-        { title: "Card 3", content: "Conteúdo do card 3.", status: "urgent" },
-        { title: "Card 4", content: "Conteúdo do card 4.", status: "common" },
-        { title: "Card 5", content: "Conteúdo do card 5.", status: "no-status" },
-        { title: "Card 6", content: "Conteúdo do card 6.", status: "finished" },
-        { title: "Card 7", content: "Conteúdo do card 7.", status: "most-urgent" },
-        { title: "Card 8", content: "Conteúdo do card 8.", status: "urgent" },
-        { title: "Card 9", content: "Conteúdo do card 9.", status: "common" },
-        { title: "Card 10", content: "Conteúdo do card 10.", status: "no-status" },
-        { title: "Card 11", content: "Conteúdo do card 11.", status: "finished" },
-        { title: "Card 12", content: "Conteúdo do card 12.", status: "most-urgent" },
-        { title: "Card 13", content: "Conteúdo do card 13.", status: "urgent" },
-        { title: "Card 14", content: "Conteúdo do card 14.", status: "common" },
-        { title: "Card 15", content: "Conteúdo do card 15.", status: "no-status" }
+        { title: "Problema 1", content: "Equipamento de climatização quebrado. Necessário verificar o sistema de resfriamento e aquecimento.", status: "finished" },
+        { title: "Problema 2", content: "Fiação elétrica exposta no corredor principal. Precisa de inspeção imediata para evitar riscos de choque.", status: "most-urgent" },
+        { title: "Problema 3", content: "Vazamento na tubulação do banheiro. Verificar e reparar a tubulação para evitar danos maiores.", status: "urgent" },
+        { title: "Problema 4", content: "Janela do escritório com problemas de fechamento. Substituir ou ajustar o mecanismo de fechamento.", status: "common" },
+        { title: "Problema 5", content: "Interruptor de luz não funcionando na sala de reunião. Substituir o interruptor.", status: "no-status" },
+        { title: "Problema 6", content: "Sistema de alarme de incêndio desativado. Verificar e garantir que o sistema esteja operacional.", status: "finished" },
+        { title: "Problema 7", content: "Porta de entrada com fechadura defeituosa. Precisa de reparo ou substituição da fechadura.", status: "most-urgent" },
+        { title: "Problema 8", content: "Sistema de irrigação do jardim não está funcionando. Verificar bombas e tubulações.", status: "urgent" },
+        { title: "Problema 9", content: "Luminárias do corredor precisam de substituição. Substituir lâmpadas queimadas e verificar circuitos.", status: "common" },
+        { title: "Problema 10", content: "Computador do servidor com falha de hardware. Realizar diagnóstico e substituição de peças defeituosas.", status: "no-status" },
+        { title: "Problema 11", content: "Ar condicionado do escritório central está inoperante. Agendar manutenção ou reparo urgente.", status: "finished" },
+        { title: "Problema 12", content: "Fugas de gás detectadas na cozinha. Contatar serviços de emergência e reparar vazamento.", status: "most-urgent" },
+        { title: "Problema 13", content: "Piso da área de armazenamento está danificado. Reparo necessário para evitar acidentes.", status: "urgent" },
+        { title: "Problema 14", content: "Equipamentos de TI na sala de servidores estão superaquecendo. Verificar sistemas de ventilação.", status: "common" },
+        { title: "Problema 15", content: "Porta de saída de emergência com mecanismo de travamento defeituoso. Verificar e reparar.", status: "no-status" }
+    
     ];
 
     const container = document.getElementById('card-container');

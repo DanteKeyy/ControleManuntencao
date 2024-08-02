@@ -2,15 +2,14 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def inicial():
     return render_template("index.html")
 
 
-@app.route("/contato")
-def contato():
-    return render_template("contato.html")
+@app.route("/pedidos")
+def pedidos():
+    return render_template("pedidos.html")
 
 
 if __name__ == '__main__':
