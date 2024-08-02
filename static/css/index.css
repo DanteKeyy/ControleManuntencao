@@ -1,76 +1,193 @@
-/* index.css */
-
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     background-color: #f0f0f0;
 }
 
-.container {
+.navbar {
+    background-color: #dc3545; /* Vermelho */
+    padding: 0.5vw 1vw;
+    color: #fff;
+    position: fixed;
     width: 100%;
-    max-width: 400px;
-    padding: 20px;
-}
-
-.logo-container {
-    text-align: center;
-    margin-bottom: 2rem; /* Espaço entre a logo e o card */
-    padding-top: 2rem;
-}
-
-.logo-container img {
-    max-width: 100%;
-    height: auto;
-    width: 150px; /* Ajuste para tamanhos menores */
-}
-
-.square-card {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #eee;
-    padding: 20px;
-    margin: 0 auto;
+    top: 0;
+    left: 0;
+    z-index: 1000;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
+}
+
+.navbar-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
 }
-.error-message {
-    color: red;
+
+.navbar-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.navbar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-menu li {
+    margin: 0 15px;
+}
+
+.navbar-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.navbar-menu a:hover {
+    color: #f8f9fa; /* Cor mais clara para o hover */
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    padding-top: 8vw;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    height: 300px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.card .edit-icon {
+    font-size: 18px;
+    color: #007bff;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.card input, .card textarea {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    width: calc(100% - 30px); /* Ajusta a largura para deixar espaço para o ícone */
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    display: none; /* Inicialmente escondido */
+}
+
+.card textarea {
+    height: 100px;
+    resize: none;
+}
+
+.card .status {
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.card .status.finished {
+    background-color: #28a745;
+}
+
+.card .status.urgent {
+    background-color: #ffc107;
+}
+
+.card .status.most-urgent {
+    background-color: #dc3545;
+}
+
+.card .status.common {
+    background-color: #007bff;
+}
+
+.card .status.no-status {
+    background-color: #6c757d;
+}
+
+.card .status-select {
     margin-top: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.card .status-select select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #6c757d;
+}
+
+.card .status-select select.finished {
+    background-color: #28a745;
+}
+
+.card .status-select select.urgent {
+    background-color: #ffc107;
+}
+
+.card .status-select select.most-urgent {
+    background-color: #dc3545;
+}
+
+.card .status-select select.common {
+    background-color: #007bff;
+}
+
+.card .status-select select.no-status {
+    background-color: #6c757d;
+}
+
+.footer {
+    text-align: center;
+    padding: 1vw;
+    background-color: #dc3545; /* Vermelho */
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     font-size: 14px;
 }
 
-.square-card .form-group {
-    margin-bottom: 1rem; /* Espaço entre os grupos de formulário */
+.footer a {
+    color: #fff;
+    text-decoration: none;
 }
 
-button.btn-block {
-    width: 100%;
+.footer a:hover {
+    text-decoration: underline;
 }
-
-@media (max-width: 576px) {
-    .square-card {
-        padding: 15px;
-    }
-
-    .square-card .form-group {
-        margin-bottom: 0.5rem;
-    }
-
-    .logo-container img {
-        width: 100px; /* Ajuste para tamanhos menores */
-    }
-}
-

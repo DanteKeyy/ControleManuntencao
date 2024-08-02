@@ -32,6 +32,12 @@ body {
     margin: 0 15px;
 }
 
+.navbar-title {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-self: center ;
+}
 .navbar-menu a {
     color: #fff;
     text-decoration: none;
