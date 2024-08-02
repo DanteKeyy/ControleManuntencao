@@ -46,6 +46,11 @@ body {
     justify-content: center;
     align-items: center;
 }
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
 
 .square-card .form-group {
     margin-bottom: 1rem; /* Espaço entre os grupos de formulário */
@@ -68,3 +73,4 @@ button.btn-block {
         width: 100px; /* Ajuste para tamanhos menores */
     }
 }
+
