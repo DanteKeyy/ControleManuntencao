@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const container = document.getElementById('card-container');
 
+    const containerUrgente = document.getElementById('card-container-urgent')
+    const highUrgencyCards = cardData.filter(card => card.status === 'most-urgent');
+    const urgencyCards= cardData.filter(card => card.status === 'urgent')
+    const commonCards= cardData.filter(card => card.status === 'commom')
+    const nsCards = cardData.filter(card => card.status == 'no-status')
+
     // Define a ordem dos status
     const statusPriority = {
         'most-urgent': 1,
@@ -46,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'common': '#007bff',
         'no-status': '#6c757d'
     };
+    
 
     // Ordena os dados dos cards com base na prioridade do status
     cardData.sort((a, b) => statusPriority[a.status] - statusPriority[b.status]);

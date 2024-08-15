@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/pedidos.css">
+    <link rel="icon" type="image/x-icon" href="/static/img/senai-favicon.jpg">
+    <title>Document</title>
+</head>
+
+<body>
+    <body>
+        <nav class="navbar">
+            <a href="home.html" style="text-decoration: none; color: inherit;"><span style="margin-right: 38vw; font-size: 1.1vw;  "> Voltar</span></a>
+            
+            <span class="navbar-title" style="margin-right: 30vw; ">Chamados - Manutenção</span>
+            <ul class="navbar-menu">
+                <li id="nome" style="text-decoration: underline;"></li>
+                <li><a href="/">Logout</a></li>
+    
+    
+            </ul>
+        </nav>
+    
+        <div class="card-container" id="card-container-NS">
+            <!-- Os cards serão inseridos aqui pelo JavaScript -->
+        </div>  
+        <footer class="footer">
+            <p>&copy; 2024 SENAI. Todos os direitos reservados.</p>
+        </footer>
+        <script src="/static/js/ns.js"></script>
+
+    </body>
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    function loadAlternativeCSS() {
+        // Verifica se a altura do conteúdo é menor que a altura da janela
+        if (document.body.scrollHeight < window.innerHeight) {
+            // Cria um novo elemento link para o CSS alternativo
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = '/static/css/fix.css'; // Substitua pelo caminho do seu arquivo CSS alternativo
+
+            // Adiciona o link ao head do documento
+            document.head.appendChild(link);
+        }
+    }
+
+    // Executa a função ao carregar a página
+    loadAlternativeCSS();
+
+    // Adiciona um listener para redimensionamento da janela
+    window.addEventListener('resize', loadAlternativeCSS);
+});
+
+    </script>
+</body>
+</html>
