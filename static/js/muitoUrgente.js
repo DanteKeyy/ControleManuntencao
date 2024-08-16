@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
        'common': '#007bff',
        'no-status': '#6c757d'
    };
-   highUrgencyCards.forEach(cardInfo => {
+ /*   highUrgencyCards.forEach(cardInfo => {
        const card = document.createElement('div');
        card.className = 'card';
 
@@ -67,14 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
        card.appendChild(cardStatus);
 
        containerHU.appendChild(card);
-   });
+   }); */
 
    
    // Ordena os dados dos cards com base na prioridade do status
-   cardData.sort((a, b) => statusPriority[a.status] - statusPriority[b.status]);
+   highUrgencyCards.sort((a, b) => statusPriority[a.status] - statusPriority[b.status]);
 
    // Adiciona todos os cards ao contêiner
-   cardData.forEach(cardInfo => {
+   highUrgencyCards.forEach(cardInfo => {
        const card = document.createElement('div');
        card.className = 'card';
 
@@ -134,6 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
        card.appendChild(cardStatus);
        card.appendChild(statusSelect);
 
-       container.appendChild(card);
+       containerHU.appendChild(card);
    });
 });

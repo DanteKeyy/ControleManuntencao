@@ -48,33 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
        'common': '#007bff',
        'no-status': '#6c757d'
    };
-   commonCards.forEach(cardInfo => {
-       const card = document.createElement('div');
-       card.className = 'card';
-
-       const cardTitle = document.createElement('h2');
-       cardTitle.textContent = cardInfo.title;
-
-       const cardContent = document.createElement('p');
-       cardContent.textContent = cardInfo.content;
-
-       const cardStatus = document.createElement('div');
-       cardStatus.className = `status ${cardInfo.status}`;
-       cardStatus.textContent = cardInfo.status.replace(/-/g, ' ').toUpperCase(); // Exibe o status com palavras em maiúsculas e substitui hífens por espaços
-
-       card.appendChild(cardTitle);
-       card.appendChild(cardContent);
-       card.appendChild(cardStatus);
-
-       containerC.appendChild(card);
-   });
+   
 
    
    // Ordena os dados dos cards com base na prioridade do status
-   cardData.sort((a, b) => statusPriority[a.status] - statusPriority[b.status]);
+   commonCards.sort((a, b) => statusPriority[a.status] - statusPriority[b.status]);
 
    // Adiciona todos os cards ao contêiner
-   cardData.forEach(cardInfo => {
+   commonCards.forEach(cardInfo => {
        const card = document.createElement('div');
        card.className = 'card';
 
@@ -134,6 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
        card.appendChild(cardStatus);
        card.appendChild(statusSelect);
 
-       container.appendChild(card);
+       containerC.appendChild(card);
    });
 });
