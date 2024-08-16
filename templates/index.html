@@ -32,7 +32,7 @@
                         </div>
                         <br>
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-danger btn-block" style="width: 20vw;">Entrar</button>
+                            <a href="{{ url_for('home') }}" class="btn btn-danger btn-block" style="width: 20vw;">Entrar</a>
                         </div>
                         <div id="error-message" class="error-message"></div>
                     </form>
@@ -41,26 +41,26 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('login-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
+<!--    <script>-->
+<!--        document.getElementById('login-form').addEventListener('submit', function(event) {-->
+<!--            event.preventDefault(); // Impede o envio padrão do formulário-->
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('error-message');
+<!--            const email = document.getElementById('email').value;-->
+<!--            const password = document.getElementById('password').value;-->
+<!--            const errorMessage = document.getElementById('error-message');-->
 
-            // Credenciais corretas
-            const validEmail = 'SENAIDEV@gmail.com';
-            const validPassword = 'dev123';
-            if (email === validEmail && password === validPassword) {
-                // Redireciona para a próxima página
-                window.location.href = "home.html"
-            } else {
-                // Exibe mensagem de erro
-                errorMessage.textContent = 'Cadastro ou senha inválidos. Tente novamente.';
-            }
-        });
-    </script>
+<!--            // Credenciais corretas-->
+<!--            const validEmail = 'SENAIDEV@gmail.com';-->
+<!--            const validPassword = 'dev123';-->
+<!--            if (email === validEmail && password === validPassword) {-->
+<!--                // Redireciona para a próxima página-->
+<!--                window.location.href = "home.html"-->
+<!--            } else {-->
+<!--                // Exibe mensagem de erro-->
+<!--                errorMessage.textContent = 'Cadastro ou senha inválidos. Tente novamente.';-->
+<!--            }-->
+<!--        });-->
+<!--    </script>-->
 
     <script src="/static/js/script.js"></script>
 </body>

@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from models.chamado import get_chamados
 
 app = Flask(__name__)
 
@@ -9,8 +10,12 @@ def inicial():
 
 @app.route("/pedidos")
 def pedidos():
-    return render_template("pedidos.html")
+    return render_template("pedidos.html", chamados=get_chamados())
+
+@app.route("/home")
+def home():
+    return render_template("home.html")
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
