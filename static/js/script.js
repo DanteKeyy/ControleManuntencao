@@ -29,11 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const container = document.getElementById('card-container');
 
-    const containerUrgente = document.getElementById('card-container-urgent')
-    const highUrgencyCards = cardData.filter(card => card.status === 'most-urgent');
-    const urgencyCards= cardData.filter(card => card.status === 'urgent')
-    const commonCards= cardData.filter(card => card.status === 'commom')
-    const nsCards = cardData.filter(card => card.status == 'no-status')
 
     // Define a ordem dos status
     const statusPriority = {
@@ -59,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Adiciona todos os cards ao contêiner
     cardData.forEach(cardInfo => {
-        const card = document.createElement('div');
+/*         const card = document.createElement('div');
         card.className = 'card';
 
         const cardTitle = document.createElement('h2');
@@ -68,12 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardContent = document.createElement('p');
         cardContent.textContent = cardInfo.content;
 
+
+        a fazer
         const cardStatus = document.createElement('div');
         cardStatus.className = `status ${cardInfo.status}`;
         cardStatus.textContent = cardInfo.status.replace(/-/g, ' ').toUpperCase(); // Exibe o status com palavras em maiúsculas e substitui hífens por espaços
 
         const statusSelect = document.createElement('div');
-        statusSelect.className = 'status-select';
+        statusSelect.className = 'status-select'; 
         
         const select = document.createElement('select');
         const statuses = [
@@ -90,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             option.textContent = status.label;
             select.appendChild(option);
         });
-
+*/
         select.value = cardInfo.status;
         select.style.backgroundColor = statusColors[cardInfo.status]; // Define a cor de fundo com base no status atual
 
