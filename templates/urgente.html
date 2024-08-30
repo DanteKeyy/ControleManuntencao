@@ -11,7 +11,7 @@
 <body>
     <body>
         <nav class="navbar">
-            <a href="home.html" style="text-decoration: none; color: inherit;"><span style="margin-right: 38vw; font-size: 1.1vw;  "> Voltar</span></a>
+            <a href="\home" style="text-decoration: none; color: inherit;"><span style="margin-right: 38vw; font-size: 1.1vw;  "> Voltar</span></a>
 
             <span class="navbar-title" style="margin-right: 30vw; ">Chamados - Manutenção</span>
             <ul class="navbar-menu">
@@ -22,18 +22,94 @@
             </ul>
         </nav>
     
-        <div class="card-container" id="card-container-U">
+                <div class="card-container" id="card-container">
             <!-- Os cards serão inseridos aqui pelo JavaScript -->
-        </div>  
+{% for chamado in chamados %}
+            <div class="card">
+                <h2>{{ chamado.titulo }}</h2>
+                <p>{{ chamado.descricao }}</p>
+                <div class="status {{ chamado.status }}">{{ chamado.status }}</div>
+                            <div class="status-select">
+                <select>
+                    <option value="finished" {% if chamado.status == 'finished' %}selected{% endif %}>Finalizado</option>
+                    <option value="most-urgent" {% if chamado.status == 'most-urgent' %}selected{% endif %}>Muito Urgente</option>
+                    <option value="urgent" {% if chamado.status == 'urgent' %}selected{% endif %}>Urgente</option>
+                    <option value="common" {% if chamado.status == 'common' %}selected{% endif %}>Comum</option>
+                    <option value="no-status" {% if chamado.status == 'no-status' %}selected{% endif %}>Sem Status</option>
+                </select>
+            </div>
+            </div>
+            {% endfor %}
+                </div>
         <footer class="footer">
             <p>&copy; 2024 SENAI. Todos os direitos reservados.</p>
         </footer>
-        <script src="/static/js/urgente.js"></script>
 
-    </body>
     <script>
+        const statusColors = {
+            'finished': '#28a745',
+            'most-urgent': '#dc3545',
+            'urgent': '#ffc107',
+            'common': '#007bff',
+            'no-status': '#6c757d'
+        };
+
+        const statusPriority = {
+            'most-urgent': 1,
+            'urgent': 2,
+            'common': 3,
+            'finished': 4,
+            'no-status': 5
+        };
+
+        // Função para ordenar os cards com base no status
+        function sortCards() {
+            const container = document.getElementById('card-container');
+            const cards = Array.from(container.querySelectorAll('.card'));
+
+            // Ordena os cards com base na prioridade do status
+            const sortedCards = cards.sort((a, b) => {
+                const aStatus = a.querySelector('.status').classList[1];
+                const bStatus = b.querySelector('.status').classList[1];
+                return statusPriority[aStatus] - statusPriority[bStatus];
+            });
+
+            // Reanexa os cards ordenados ao container
+            sortedCards.forEach(sortedCard => container.appendChild(sortedCard));
+        }
+
   document.addEventListener('DOMContentLoaded', () => {
     function loadAlternativeCSS() {
+     const container = document.getElementById('card-container');
+            const cards = container.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const cardStatus = card.querySelector('.status');
+                const select = card.querySelector('.status-select select');
+
+                // Define a cor de fundo do seletor com base no status atual
+                select.style.backgroundColor = statusColors[select.value];
+
+                // Atualiza o card quando o status for alterado
+                select.addEventListener('change', (event) => {
+                    const newStatus = event.target.value;
+
+                    // Atualiza a classe do status
+                    cardStatus.className = `status ${newStatus}`;
+                    cardStatus.textContent = newStatus.replace(/-/g, ' ').toUpperCase();
+
+                    // Atualiza a cor de fundo do seletor
+                    select.style.backgroundColor = statusColors[newStatus];
+
+                    // Reordena os cards após a atualização
+                    sortCards();
+
+                });
+            });
+
+            // Ordena os cards ao carregar a página
+            sortCards();
+
         // Verifica se a altura do conteúdo é menor que a altura da janela
         if (document.body.scrollHeight < window.innerHeight) {
             // Cria um novo elemento link para o CSS alternativo
@@ -51,8 +127,12 @@
 
     // Adiciona um listener para redimensionamento da janela
     window.addEventListener('resize', loadAlternativeCSS);
+
 });
 
+
     </script>
+    </body>
+
 </body>
 </html>

@@ -25,10 +25,10 @@
         <div class="buttons">
             <a href="#"><button style="margin-bottom: 1vw;">Todos (Tabela)</button></a>
             <a href="{{ url_for('pedidos') }}"><button>Todos (Cartões)</button></a>
-                <a href="muitoUrgente.html"><button>Alta Urgência</button></a>
-                    <a href="urgente.html"><button>Urgente</button></a>
-                        <a href="comum.html"><button>Baixa Urgência</button></a>
-                            <a href="semstatus.html" style="margin-bottom: 1vw;"><button>Sem Status</button></a>
+                <a href="{{ url_for('pedidosMU') }}"><button>Alta Urgência</button></a>
+                    <a href="{{ url_for('pedidosU') }}"><button>Urgente</button></a>
+                        <a href="{{ url_for('pedidosC') }}"><button>Baixa Urgência</button></a>
+                            <a href="{{ url_for('pedidosNS') }}" style="margin-bottom: 1vw;"><button>Sem Status</button></a>
                                 <a href="#"><button>Meus Chamados</button></a>
         </div>
     </div>

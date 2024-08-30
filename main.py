@@ -1,5 +1,7 @@
 from flask import Flask, render_template
-from models.chamado import get_chamados
+from models.chamado import *
+from database import get_db_connection
+
 
 app = Flask(__name__)
 
@@ -15,6 +17,24 @@ def pedidos():
 @app.route("/home")
 def home():
     return render_template("home.html")
+
+@app.route('/pedidosMU')
+def pedidosMU():
+        return render_template('muitoUrgente.html', chamados=get_chamados_MU())
+
+@app.route('/pedidosU')
+def pedidosU():
+
+        return render_template('urgente.html', chamados=get_chamados_U())
+@app.route('/pedidosC')
+def pedidosC():
+
+        return render_template('comum.html', chamados=get_chamados_C())
+
+@app.route('/pedidosNS')
+def pedidosNS():
+
+        return render_template('semstatus.html', chamados=get_chamados_NS())
 
 
 if __name__ == '__main__':
