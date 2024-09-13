@@ -18,9 +18,15 @@ def pedidos():
 def home():
     return render_template("home.html")
 
+@app.route('/pedidosO')
+def pedidosO():
+        return render_template('emAndamento.html', chamados=get_chamados_O())
+
+
 @app.route('/pedidosMU')
 def pedidosMU():
         return render_template('muitoUrgente.html', chamados=get_chamados_MU())
+
 
 @app.route('/pedidosU')
 def pedidosU():

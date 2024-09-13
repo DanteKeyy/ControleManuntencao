@@ -111,7 +111,10 @@ body {
 }
 
 .card .status.urgent {
-    background-color: #ffc107;
+    background-color: #ff7b07;
+}
+.card .status.ongoing {
+    background-color: #FFC222;
 }
 
 .card .status.most-urgent {
@@ -152,6 +155,10 @@ body {
 
 .card .status-select select.urgent {
     background-color: #ffc107;
+}
+
+.card .status-select select.ongoing {
+    background-color: #FFC222;
 }
 
 .card .status-select select.most-urgent {

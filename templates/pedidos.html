@@ -25,7 +25,8 @@
             <p>{{ chamado.descricao }}</p>
             <div class="status {{ chamado.status }}">{{ chamado.status }}</div>
             <div class="status-select">
-                <select>
+                 <select>
+                    <option value="ongoing" {% if chamado.status == 'ongoing' %}selected{% endif %}>Em Andamento</option>
                     <option value="finished" {% if chamado.status == 'finished' %}selected{% endif %}>Finalizado</option>
                     <option value="most-urgent" {% if chamado.status == 'most-urgent' %}selected{% endif %}>Muito Urgente</option>
                     <option value="urgent" {% if chamado.status == 'urgent' %}selected{% endif %}>Urgente</option>
@@ -41,22 +42,24 @@
         <p>&copy; 2024 SENAI. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- <script src="/static/js/script.js"></script> -->
+    <!-- <script src="/static/js/scri   pt.js"></script> -->
     <script>
  const statusColors = {
+         'ongoing': '#FFC222',
             'finished': '#28a745',
             'most-urgent': '#dc3545',
-            'urgent': '#ffc107',
+            'urgent': '#ff7b07',
             'common': '#007bff',
             'no-status': '#6c757d'
         };
 
         const statusPriority = {
-            'most-urgent': 1,
-            'urgent': 2,
-            'common': 3,
-            'finished': 4,
-            'no-status': 5
+        'ongoing': 1,
+            'most-urgent': 2,
+            'urgent': 3,
+            'common': 4,
+            'finished': 5,
+            'no-status': 6
         };
 
         // Função para ordenar os cards com base no status
