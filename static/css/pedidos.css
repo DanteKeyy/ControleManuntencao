@@ -154,7 +154,7 @@ body {
 }
 
 .card .status-select select.urgent {
-    background-color: #ffc107;
+    background-color: #ff7b07;
 }
 
 .card .status-select select.ongoing {
