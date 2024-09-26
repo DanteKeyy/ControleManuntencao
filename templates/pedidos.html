@@ -24,7 +24,7 @@
             <p>{{ chamado.descricao }}</p>
             
             <div class="observacoes">
-                <textarea id="observacao-{{ chamado.id }}" name="observacao" placeholder="Digite suas observações"></textarea>
+                <textarea style="margin-bottom: 50px;" id="observacao-{{ chamado.id }}" name="observacao" placeholder="Digite suas observações"></textarea>
             </div>
             <br><br>
 
@@ -37,6 +37,8 @@
                     <option id="{{chamado.chamado_id}}" value="common" {% if chamado.status == 'common' %}selected{% endif %}>Comum</option>
                     <option id="{{chamado.chamado_id}}" value="no-status" {% if chamado.status == 'no-status' %}selected{% endif %}>Sem Status</option>
                 </select>
+
+                <button class="button-salvar">Salvar</button>
             </div>
 
         </div>

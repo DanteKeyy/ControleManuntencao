@@ -24,7 +24,6 @@ def get_chamados() -> List[Chamado]:
     chamados = []
 
     for result in results:
-        print(result)
         chamado = Chamado(
             chamado_id=result[0],
             titulo=result[1],
