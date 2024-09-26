@@ -73,8 +73,30 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 300px; /* Ajuste a altura conforme necessário */
+
     position: relative;
 }
+
+
+
+.observacoes {
+    display: flex;
+    flex-direction: column; /* Organiza os elementos na coluna */
+    margin-top: auto; /* Faz o espaço superior, empurrando para baixo */
+}
+
+.observacoes textarea {
+    width: 100%; /* Usa toda a largura do card */
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 10px; /* Altura mínima */
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+
 
 .card .edit-icon {
     font-size: 18px;
@@ -91,11 +113,10 @@ body {
     width: calc(100% - 30px); /* Ajusta a largura para deixar espaço para o ícone */
     box-sizing: border-box;
     margin-bottom: 10px;
-    display: none; /* Inicialmente escondido */
 }
 
 .card textarea {
-    height: 100px;
+    height: 70px;
     resize: none;
 }
 
@@ -104,6 +125,7 @@ body {
     padding: 5px;
     border-radius: 5px;
     color: #fff;
+    text-align: center; /* Adiciona alinhamento central */
 }
 
 .card .status.finished {

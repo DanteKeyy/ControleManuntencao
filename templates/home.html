@@ -5,41 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/fix.css">
-    <title>Homepage</title>
+    <title>Página Inicial - Manutenção</title>
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="{{ url_for('pedidos') }}" style="text-decoration: none; color: inherit;"><span
-                style="margin-right: 38vw; font-size: 1.1vw;  "> Voltar</span></a>
+<nav class="navbar">
+    <a href="{{ url_for('pedidos') }}" style="text-decoration: none; color: inherit;"><span
+            style="margin-right: 38vw; font-size: 1.1vw;  "> Voltar</span></a>
 
-        <span class="navbar-title" style="margin-right: 30vw; ">Chamados - Manutenção</span>
-        <ul class="navbar-menu">
-            <li id="nome" style="text-decoration: underline;"></li>
-            <li><a href="/">Logout</a></li>
+    <span class="navbar-title" style="margin-right: 30vw; ">Chamados - Manutenção</span>
+    <ul class="navbar-menu">
+        <li id="nome" style="text-decoration: underline;"></li>
+        <li><a href="/">Logout</a></li>
 
 
-        </ul>
-    </nav>
-    <div class="container">
-        <div class="buttons">
-            <a href="#"><button style="margin-bottom: 1vw;">Todos (Tabela)</button></a>
-            <a href="{{ url_for('pedidos') }}"><button>Todos (Cartões)</button></a>
-                <a href="{{ url_for('pedidosO') }}"><button>Em Andamento</button></a>
-                <a href="{{ url_for('pedidosMU') }}"><button>Alta Urgência</button></a>
-                    <a href="{{ url_for('pedidosU') }}"><button>Urgente</button></a>
-                        <a href="{{ url_for('pedidosC') }}"><button>Baixa Urgência</button></a>
-                            <a href="{{ url_for('pedidosNS') }}" style="margin-bottom: 1vw;"><button>Sem Status</button></a>
-                            <a href="{{ url_for('pedidosF') }}" style="margin-bottom: 1vw;"><button>Finalizados</button></a>
+    </ul>
+</nav>
+<div class="container">
+    <div class="buttons">
+        <a href="{{ url_for('tabela') }}">
+            <button style="margin-bottom: 1vw;">Todos (Tabela)</button>
+        </a>
+        <a href="{{ url_for('pedidos') }}">
+            <button>Todos (Cartões)</button>
+        </a>
+        <a href="{{ url_for('pedidosO') }}">
+            <button>Em Andamento</button>
+        </a>
+        <a href="{{ url_for('pedidosMU') }}">
+            <button>Alta Urgência</button>
+        </a>
+        <a href="{{ url_for('pedidosU') }}">
+            <button>Urgente</button>
+        </a>
+        <a href="{{ url_for('pedidosC') }}">
+            <button>Baixa Urgência</button>
+        </a>
+        <a href="{{ url_for('pedidosNS') }}" style="margin-bottom: 1vw;">
+            <button>Sem Status</button>
+        </a>
+        <a href="{{ url_for('pedidosF') }}" style="margin-bottom: 1vw;">
+            <button>Finalizados</button>
+        </a>
+        <a href="#">
+            <button>Gráfico</button>
+        </a>
 
-                                <a href="#"><button>Meus Chamados</button></a>
-            <br>
-        </div>
+        <a href="#">
+            <button>Meus Chamados</button>
+        </a>
+        <br>
     </div>
-    <footer class="footer">
-        <p>&copy; 2024 SENAI. Todos os direitos reservados.</p>
-    </footer>
-    <script src="/static/js/script.js"></script>
+</div>
+<footer class="footer">
+    <p>&copy; 2024 SENAI. Todos os direitos reservados.</p>
+</footer>
+<script src="/static/js/script.js"></script>
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', () => {

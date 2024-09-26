@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/pedidos.css">
     <link rel="icon" type="image/x-icon" href="/static/img/senai-favicon.jpg">
-    <title>Document</title>
+    <title>Manutenção - Muito Urgentes</title>
 </head>
 
 <body>
@@ -37,12 +37,6 @@
                     <option value="no-status" {% if chamado.status == 'no-status' %}selected{% endif %}>Sem Status</option>
                 </select>
             </div>
-            <button class="add-comment-btn">Adicionar Comentário</button>
-
-            <div class="comment-section" style="display: none;">
-                <textarea placeholder="Escreva seu comentário aqui..."></textarea>
-            </div>
-            <button class="save-comment-btn">Salvar</button>
             </div>
             {% endfor %}
         </div>
@@ -135,34 +129,6 @@
 
     // Adiciona um listener para redimensionamento da janela
     window.addEventListener('resize', loadAlternativeCSS);
-    const addCommentButtons = document.querySelectorAll('.add-comment-btn');
-        
-        addCommentButtons.forEach((button) => {
-            button.addEventListener('click', (event) => {
-                const card = event.target.closest('.card');
-                const commentSection = card.querySelector('.comment-section');
-                
-                // Exibe ou oculta o campo de texto de comentário
-                if (commentSection.style.display === 'none') {
-                    commentSection.style.display = 'block';
-                } else {
-                    commentSection.style.display = 'none';
-                }
-            });
-        });
-
-        // Gerencia o clique no botão "Salvar"
-        const saveCommentButtons = document.querySelectorAll('.save-comment-btn');
-        
-        saveCommentButtons.forEach((button) => {
-            button.addEventListener('click', (event) => {
-                const card = event.target.closest('.card');
-                const commentText = card.querySelector('textarea').value;
-                
-                // Exibir o valor do comentário (pode ser enviado para o servidor aqui)
-                alert('Comentário salvo: ' + commentText);
-            });
-        });
 
 });
 

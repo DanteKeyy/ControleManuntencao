@@ -19,6 +19,10 @@ def pedidos():
 def home():
     return render_template("home.html")
 
+@app.route("/tabela")
+def tabela():
+    return render_template("tabela.html", chamados=get_chamados())
+
 
 @app.route('/pedidosO')
 def pedidosO():
