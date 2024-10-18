@@ -18,31 +18,40 @@
     </nav>
 
     <div class="card-container" id="card-container">
+
         {% for chamado in chamados %}
-        <div class="card">
-            <h2>{{ chamado.titulo }}</h2>
-            <p>{{ chamado.descricao }}</p>
-            
-            <div class="observacoes">
-                <textarea style="margin-bottom: 50px;" id="observacao-{{ chamado.id }}" name="observacao" placeholder="Digite suas observações"></textarea>
+        <form action=" {{ url_for('atualizarChamado') }}" method="POST">
+
+            <input type="hidden" name="chamado_id" value="{{ chamado.chamado_id }}" />
+
+                  <div class="card">
+                <h2>{{ chamado.titulo }}</h2>
+                <p>{{ chamado.descricao }}</p>
+
+                <div class="observacoes">
+                    <textarea style="margin-bottom: 50px;" id="observacao-{{ chamado.chamado_id }}" name="observacao" placeholder="Digite suas observações">{{ chamado.observacao}}</textarea>
+                </div>
+                <br><br>
+
+                <div class="status-select">
+
+                    <select name="status" onchange="onSelectedCard('{{ chamado.chamado_id }}, {{ chamado.status }}')">
+                        <option id="{{chamado.chamado_id}}" value="ongoing" {% if chamado.status == 'ongoing' %}selected{% endif %}>Em Andamento</option>
+                        <option id="{{chamado.chamado_id}}" value="finished" {% if chamado.status == 'finished' %}selected{% endif %}>Finalizado</option>
+                        <option id="{{chamado.chamado_id}}" value="most-urgent" {% if chamado.status == 'most-urgent' %}selected{% endif %}>Muito Urgente</option>
+                        <option id="{{chamado.chamado_id}}" value="urgent" {% if chamado.status == 'urgent' %}selected{% endif %}>Urgente</option>
+                        <option id="{{chamado.chamado_id}}" value="common" {% if chamado.status == 'common' %}selected{% endif %}>Comum</option>
+                        <option id="{{chamado.chamado_id}}" value="no-status" {% if chamado.status == 'no-status' %}selected{% endif %}>Sem Status</option>
+                    </select>
+
+                    <button class="button-salvar" type="submit">Salvar</button>
+                </div>
             </div>
-            <br><br>
 
-            <div class="status-select">
-                <select onchange="onSelectedCard('{{ chamado.chamado_id }}, {{ chamado.status }}')">
-                    <option id="{{chamado.chamado_id}}" value="ongoing" {% if chamado.status == 'ongoing' %}selected{% endif %}>Em Andamento</option>
-                    <option id="{{chamado.chamado_id}}" value="finished" {% if chamado.status == 'finished' %}selected{% endif %}>Finalizado</option>
-                    <option id="{{chamado.chamado_id}}" value="most-urgent" {% if chamado.status == 'most-urgent' %}selected{% endif %}>Muito Urgente</option>
-                    <option id="{{chamado.chamado_id}}" value="urgent" {% if chamado.status == 'urgent' %}selected{% endif %}>Urgente</option>
-                    <option id="{{chamado.chamado_id}}" value="common" {% if chamado.status == 'common' %}selected{% endif %}>Comum</option>
-                    <option id="{{chamado.chamado_id}}" value="no-status" {% if chamado.status == 'no-status' %}selected{% endif %}>Sem Status</option>
-                </select>
-
-                <button class="button-salvar">Salvar</button>
-            </div>
-
-        </div>
+        </form>
         {% endfor %}
+
+
     </div>
     <br>
 
@@ -71,19 +80,19 @@
 
         // Função para ordenar os cards com base no status
         function sortCards() {
-            const container = document.getElementById('card-container');
-            const cards = Array.from(container.querySelectorAll('.card'));
+    const container = document.getElementById('card-container');
+    const forms = Array.from(container.querySelectorAll('form'));
 
-            // Ordena os cards com base na prioridade do status
-            const sortedCards = cards.sort((a, b) => {
-                const aStatus = a.querySelector('.status-select select').value;
-                const bStatus = b.querySelector('.status-select select').value;
-                return statusPriority[aStatus] - statusPriority[bStatus];
-            });
+    // Ordena os forms com base na prioridade do status
+    const sortedForms = forms.sort((a, b) => {
+        const aStatus = a.querySelector('.status-select select').value;
+        const bStatus = b.querySelector('.status-select select').value;
+        return statusPriority[aStatus] - statusPriority[bStatus];
+    });
 
-            // Reanexa os cards ordenados ao container
-            sortedCards.forEach(sortedCard => container.appendChild(sortedCard));
-        }
+    // Reanexa os forms ordenados ao container
+    sortedForms.forEach(sortedForm => container.appendChild(sortedForm));
+}
 
         // Inicializa a cor de fundo dos seletores e ordena os cards ao carregar a página
         document.addEventListener('DOMContentLoaded', () => {
@@ -100,9 +109,6 @@
                 select.addEventListener('change', (event) => {
                     const newStatus = event.target.value;
                     select.style.backgroundColor = statusColors[newStatus];
-
-                    // Reordena os cards após a atualização
-                    sortCards();
                 });
             });
 
@@ -114,8 +120,8 @@
             // setTimeout(() => {
             //     console.log(id, status)
             // }, 1000);
-            
-        } 
+
+        }
 
     </script>
 </body>
