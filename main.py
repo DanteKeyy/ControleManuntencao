@@ -46,7 +46,7 @@ def pedidosU():
 
 @app.route('/pedidosC')
 def pedidosC():
-    return render_template('comum.html', chamados=get_chamados_by_status('commom'))
+    return render_template('comum.html', chamados=get_chamados_by_status('common'))
 
 
 @app.route('/pedidosNS')
@@ -57,15 +57,26 @@ def pedidosNS():
 def grafico():
     return render_template("grafico.html", chamados=get_chamados_by_status(None))
 
-@app.route("/atualizarChamado", methods=["POST"])
-def atualizarChamado():
-    dados = request.form
+@app.route("/atualizarChamado/<pagina>", methods=["POST"])
+def atualizarChamado(pagina):
     chamadoId = request.form['chamado_id']
     observacao = request.form['observacao']
     status = request.form['status']
     POSTChamado(chamadoId, observacao, status)
-    return redirect("/pedidos")
-
+    if pagina == 'todos':
+        return redirect("/pedidos")
+    elif pagina == 'andamento':
+        return redirect("/pedidosO")
+    elif pagina == 'comum':
+        return redirect("/pedidosC")
+    elif pagina == 'finalizado':
+        return redirect("/pedidosF")
+    elif pagina == "muitoUrgente":
+        return redirect("/pedidosMU")
+    elif pagina == "semStatus":
+        return redirect("/pedidosNS")
+    elif pagina == "urgente":
+        return redirect("/pedidosU")
 
 if __name__ == '__main__':
     app.run(debug=True)

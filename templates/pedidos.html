@@ -20,7 +20,7 @@
     <div class="card-container" id="card-container">
 
         {% for chamado in chamados %}
-        <form action=" {{ url_for('atualizarChamado') }}" method="POST">
+        <form action=" {{ url_for('atualizarChamado', pagina='todos') }}" method="POST">
 
             <input type="hidden" name="chamado_id" value="{{ chamado.chamado_id }}" />
 

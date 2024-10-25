@@ -3,13 +3,12 @@ from typing import List
 
 
 class Chamado:
-    def __init__(self, chamado_id, titulo, descricao, data, status,  local, observacao):
+    def __init__(self, chamado_id, titulo, descricao, data, status, observacao):
         self.chamado_id = chamado_id
         self.titulo = titulo
         self.descricao = descricao
         self.data = data
         self.status = status
-        self.local = local
         self.observacao = observacao
 
 def get_chamados_by_status(status) -> List[Chamado]:
@@ -26,8 +25,8 @@ def get_chamados_by_status(status) -> List[Chamado]:
         cursor.execute("SELECT * FROM chamados WHERE status = 'most-urgent';")
     elif status == 'urgent':
         cursor.execute("SELECT * FROM chamados WHERE status = 'urgent';")
-    elif status == 'commom':
-        cursor.execute("SELECT * FROM chamados WHERE status = 'commom';")
+    elif status == 'common':
+        cursor.execute("SELECT * FROM chamados WHERE status = 'common';")
     elif status == 'no-status':
         cursor.execute("SELECT * FROM chamados WHERE status = 'no-status';")
 
@@ -45,8 +44,7 @@ def get_chamados_by_status(status) -> List[Chamado]:
             descricao=result[2],
             data=result[3],
             status=result[4],
-            local=result[5],
-            observacao=result[6]
+            observacao=result[5]
         )
         chamados.append(chamado)
     return chamados
