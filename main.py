@@ -63,6 +63,16 @@ def grafico():
 def form():
     return render_template("form.html")
 
+@app.route("/salvarChamado", methods=["POST"])
+def salvarChamado():
+    email_solicitante = request.form["email_requisitante"]
+    nome_solicitante = request.form["nome_requisitante"]
+    ambiente = request.form["ambiente"]
+    descricao_chamado = request.form["descricao_chamado"]
+    salvar(nome_solicitante, email_solicitante, ambiente, descricao_chamado)
+    return redirect("/pedidos")
+
+
 @app.route("/atualizarChamado/<pagina>", methods=["POST"])
 def atualizarChamado(pagina):
     chamadoId = request.form['chamado_id']

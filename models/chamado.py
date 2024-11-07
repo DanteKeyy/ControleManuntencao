@@ -71,3 +71,16 @@ def POSTChamado(chamado_id, observacao, status):
     )
     conn.commit()
     conn.close()
+
+def salvar(nome, email, ambiente, descricao):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    from datetime import datetime
+    data_hora_atual = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    cursor.execute(
+        """
+        INSERT into chamados (nome_solicitante, email_solicitante, local, descricao, titulo, data, status) VALUES (%s, %s, %s,%s, %s, %s, %s);
+        """, (nome, email, ambiente, descricao, "Chamado", data_hora_atual, "no-status")
+    )
+    conn.commit()
+    conn.close()
