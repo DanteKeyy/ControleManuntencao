@@ -1,54 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: #f0f0f0;
-}
-
-.navbar {
-    background-color: #dc3545; /* Vermelho */
-    padding: 0.5vw 1vw;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: flex-end; /* Alinha os itens à direita */
-}
-
-.navbar-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    padding-right: 20px;
-}
-
-.navbar-menu li {
-    margin: 0 10px;
-}
-
-.navbar-title {
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    justify-self: center ;
-}
-.navbar-menu a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-
-.navbar-menu a:hover {
-    color: #f8f9fa; /* Cor mais clara para o hover */
-}
-
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -87,8 +36,6 @@ body {
     min-height: 10px; /* Altura mínima */
     resize: vertical; /* Permite redimensionar verticalmente */
 }
-
-
 
 .card .edit-icon {
     font-size: 18px;
@@ -210,11 +157,6 @@ body {
 
 
 @media (max-width: 768px) {
-    .navbar-menu {
-        flex-direction: column;
-        align-items: flex-end;
-    }
-
     .card-container {
         padding: 10px;
         padding-top: 60px; /* Ajusta o padding para dar espaço para a navbar */
@@ -235,14 +177,4 @@ body {
         width: 100%;
         max-width: 300px;
     }
-}
-.footer {
-background-color: #dc3545; /* Vermelho */
-color: #fff;
-text-align: center;
-padding: 10px;
-position: relative;
-bottom: 0;
-width: 100%;
-
 }

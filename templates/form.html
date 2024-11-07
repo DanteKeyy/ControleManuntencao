@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Serviços de Manutenção</title>
+    <link rel="stylesheet" href="/static/css/form.css">
+</head>
+
+<body>
+    <header>
+        <h1>SOLICITAÇÃO DE SERVIÇOS DE MANUTENÇÃO</h1>
+    </header>
+    <div class="form-container">
+        <form id="maintenance-form">
+            <label for="nome">Nome completo do solicitante: <span>*</span></label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="nome">E-mail do solicitante: <span>*</span></label>
+            <input type="email" id="email" name="email" required>
+            <label for="ambiente">Identifique o ambiente: <span>*</span></label>
+            <input type="text" id="ambiente" name="ambiente" required>
+
+            <label for="ocorrencia">Descreva a ocorrência: <span>*</span></label>
+            <textarea id="ocorrencia" name="ocorrencia" required></textarea>
+
+            <label for="arquivo">Envie uma ilustração (foto, áudio, vídeo, etc)</label>
+            <input type="file" id="arquivo" name="arquivo" accept="image/*,audio/*,video/*">
+
+            <label for="observacao">Observação (Se julgar necessário)</label>
+            <textarea id="observacao" name="observacao"></textarea>
+
+            <button type="submit">ENVIAR</button>
+        </form>
+    </div>
+    <script src="/static/js/form.js"></script>
+</body>
+
+</html>

@@ -19,6 +19,7 @@ def pedidos():
 def home():
     return render_template("home.html")
 
+
 @app.route("/tabela")
 def tabela():
     return render_template("tabela.html", chamados=get_chamados_by_status(None))
@@ -53,9 +54,11 @@ def pedidosC():
 def pedidosNS():
     return render_template('semstatus.html', chamados=get_chamados_by_status('no-status'))
 
+
 @app.route("/grafico")
 def grafico():
     return render_template("grafico.html", chamados=get_chamados_by_status(None))
+
 
 @app.route("/atualizarChamado/<pagina>", methods=["POST"])
 def atualizarChamado(pagina):
@@ -77,6 +80,7 @@ def atualizarChamado(pagina):
         return redirect("/pedidosNS")
     elif pagina == "urgente":
         return redirect("/pedidosU")
+
 
 if __name__ == '__main__':
     app.run(debug=True)

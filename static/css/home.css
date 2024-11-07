@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    padding:10px;
+    overflow-x: hidden;
 }
 
 .header {
@@ -22,6 +22,8 @@ body {
 }
 
 .container {
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
 
@@ -31,8 +33,14 @@ h1 {
 
 .buttons {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.left, .center, .right {
+    display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 10px;
 }
 
@@ -49,4 +57,10 @@ button {
 
 button:hover {
     background-color: darkred;
+}
+
+@media (max-width: 768px) {
+    .buttons {
+        flex-direction: column;
+    }
 }
