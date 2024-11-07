@@ -59,6 +59,9 @@ def pedidosNS():
 def grafico():
     return render_template("grafico.html", chamados=get_chamados_by_status(None))
 
+@app.route("/form")
+def form():
+    return render_template("form.html")
 
 @app.route("/atualizarChamado/<pagina>", methods=["POST"])
 def atualizarChamado(pagina):

@@ -3,7 +3,7 @@ from typing import List
 
 
 class Chamado:
-    def __init__(self, chamado_id, titulo, descricao, data, status, local, observacao):
+    def __init__(self, chamado_id, titulo, descricao, data, status, local, observacao, nome_solicitante, email_solicitante):
         self.chamado_id = chamado_id
         self.titulo = titulo
         self.descricao = descricao
@@ -11,25 +11,27 @@ class Chamado:
         self.status = status
         self.local = local
         self.observacao = observacao
+        self.nome_solicitante = nome_solicitante
+        self.email_solicitante = email_solicitante
 
 def get_chamados_by_status(status) -> List[Chamado]:
     conn = get_db_connection()
     cursor = conn.cursor()
 
     if status == None:
-        cursor.execute('SELECT * FROM chamados;')
+        cursor.execute('SELECT id, titulo, descricao, data, status, local, observacao FROM chamados;')
     elif status == 'ongoing':
-        cursor.execute("SELECT * FROM chamados WHERE status = 'ongoing';")
+        cursor.execute("SELECT id, titulo, descricao, data, status, local, observacao FROM chamados WHERE status = 'ongoing';")
     elif status == 'finished':
-        cursor.execute("SELECT * FROM chamados WHERE status = 'finished';")
+        cursor.execute("SELECT id, titulo, descricao, data, status, local, observacao FROM chamados WHERE status = 'finished';")
     elif status == 'most-urgent':
-        cursor.execute("SELECT * FROM chamados WHERE status = 'most-urgent';")
+        cursor.execute("SELECT id, titulo, descricao, data, status, local, observacao FROM chamados WHERE status = 'most-urgent';")
     elif status == 'urgent':
-        cursor.execute("SELECT * FROM chamados WHERE status = 'urgent';")
+        cursor.execute("SELECT id, titulo, descricao, data, status, local, observacao FROM chamados WHERE status = 'urgent';")
     elif status == 'common':
-        cursor.execute("SELECT * FROM chamados WHERE status = 'common';")
+        cursor.execute("SELECT id, titulo, descricao, data, status, local, observacao FROM chamados WHERE status = 'common';")
     elif status == 'no-status':
-        cursor.execute("SELECT * FROM chamados WHERE status = 'no-status';")
+        cursor.execute("SELECT id, titulo, descricao, data, status, local, observacao FROM chamados WHERE status = 'no-status';")
 
     results = cursor.fetchall()
 
@@ -39,6 +41,10 @@ def get_chamados_by_status(status) -> List[Chamado]:
     chamados = []
 
     for result in results:
+        observacao = result[6]
+        if observacao is None:
+            observacao = ""
+
         chamado = Chamado(
             chamado_id=result[0],
             titulo=result[1],
@@ -46,7 +52,9 @@ def get_chamados_by_status(status) -> List[Chamado]:
             data=result[3],
             status=result[4],
             local=result[5],
-            observacao=result[6]
+            observacao=observacao,
+            nome_solicitante="",
+            email_solicitante=""
         )
         chamados.append(chamado)
     return chamados
