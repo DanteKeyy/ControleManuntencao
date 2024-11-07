@@ -70,7 +70,7 @@ def salvarChamado():
     ambiente = request.form["ambiente"]
     descricao_chamado = request.form["descricao_chamado"]
     salvar(nome_solicitante, email_solicitante, ambiente, descricao_chamado)
-    return redirect("/pedidos")
+    return render_template("obrigado.html")
 
 
 @app.route("/atualizarChamado/<pagina>", methods=["POST"])
