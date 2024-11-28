@@ -62,8 +62,8 @@
 <!--        <script src="/static/js/comum.js"></script>-->
 
     <script>
- const statusColors = {
-         'ongoing': '#FFC222',
+        const statusColors = {
+            'ongoing': '#FFC222',
             'finished': '#28a745',
             'most-urgent': '#dc3545',
             'urgent': '#ff7b07',
@@ -72,7 +72,7 @@
         };
 
         const statusPriority = {
-        'ongoing': 1,
+            'ongoing': 1,
             'most-urgent': 2,
             'urgent': 3,
             'common': 4,
@@ -80,55 +80,42 @@
             'no-status': 6
         };
 
-        // Função para ordenar os cards com base no status
         function sortCards() {
             const container = document.getElementById('card-container');
-            const cards = Array.from(container.querySelectorAll('.card'));
+            const forms = Array.from(container.querySelectorAll('form'));
 
-            // Ordena os cards com base na prioridade do status
-            const sortedCards = cards.sort((a, b) => {
-                const aStatus = a.querySelector('.status').classList[1];
-                const bStatus = b.querySelector('.status').classList[1];
+            const sortedForms = forms.sort((a, b) => {
+                const aStatus = a.querySelector('.status-select select').value;
+                const bStatus = b.querySelector('.status-select select').value;
                 return statusPriority[aStatus] - statusPriority[bStatus];
             });
 
-            // Reanexa os cards ordenados ao container
-            sortedCards.forEach(sortedCard => container.appendChild(sortedCard));
+            sortedForms.forEach(sortedForm => container.appendChild(sortedForm));
         }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    function loadAlternativeCSS() {
-     const container = document.getElementById('card-container');
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('card-container');
             const cards = container.querySelectorAll('.card');
 
             cards.forEach(card => {
-                const cardStatus = card.querySelector('.status');
                 const select = card.querySelector('.status-select select');
 
-                // Define a cor de fundo do seletor com base no status atual
                 select.style.backgroundColor = statusColors[select.value];
 
-                // Atualiza o card quando o status for alterado
                 select.addEventListener('change', (event) => {
                     const newStatus = event.target.value;
-
-                    // Atualiza a classe do status
-                    cardStatus.className = `status ${newStatus}`;
-                    cardStatus.textContent = newStatus.replace(/-/g, ' ').toUpperCase();
-
-                    // Atualiza a cor de fundo do seletor
                     select.style.backgroundColor = statusColors[newStatus];
-
-                    // Reordena os cards após a atualização
-                    sortCards();
-
                 });
             });
 
-            // Ordena os cards ao carregar a página
             sortCards();
+        });
 
-
+        function onSelectedCard(id, status) {
+            // setTimeout(() => {
+            //     console.log(id, status)
+            // }, 1000);
+        }
 
     </script>
     </body>
