@@ -13,7 +13,7 @@
 
 <body>
     <nav class="navbar">
-        <a href="{{ url_for('pedidos') }}" style="text-decoration: none; color: inherit;">
+        <a href="\home" style="text-decoration: none; color: inherit;">
             <span>Voltar</span>
         </a>
 
@@ -21,7 +21,7 @@
 
         <ul class="navbar-menu">
             <li id="nome" style="text-decoration: underline;"></li>
-            <li><a href="/">Logout</a></li>
+            <li><a href="/"> - Logout</a></li>
         </ul>
     </nav>
 
@@ -29,7 +29,6 @@
         <table id="example" class="display" style="width:100%">
             <thead>
                 <tr>
-                    <th>Titulo</th>
                     <th>descrição</th>
                     <th>status</th>
                 </tr>
@@ -39,7 +38,6 @@
 
                 {% for chamado in chamados %}
                 <tr>
-                    <td>{{ chamado.titulo }}</td>
                     <td>{{ chamado.descricao }}</td>
                     <td> {% if chamado.status == 'ongoing' %}
                         Em Andamento

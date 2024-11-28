@@ -72,6 +72,16 @@ def salvarChamado():
     salvar(nome_solicitante, email_solicitante, ambiente, descricao_chamado)
     return render_template("obrigado.html")
 
+@app.route("/login", methods=["POST"])
+def login():
+    usuario = request.form["usuario"]
+    password = request.form["password"]
+
+    if usuario == 'fernandocaum' and password == 'senai':
+        return render_template("home.html")
+    else:
+        return render_template('index.html')
+
 
 @app.route("/atualizarChamado/<pagina>", methods=["POST"])
 def atualizarChamado(pagina):
