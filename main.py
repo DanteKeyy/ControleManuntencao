@@ -27,7 +27,7 @@ def tabela():
 
 @app.route('/pedidosO')
 def pedidosO():
-    return render_template('emAndamento.html', chamados=get_chamados_by_status('ongoing'))
+    return render_template('EmAndamento.html', chamados=get_chamados_by_status('ongoing'))
 
 
 @app.route('/pedidosMU')

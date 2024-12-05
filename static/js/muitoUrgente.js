@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Nome da conta logada
-    const nomeConta = "Dev"; // Substitua pelo nome real da conta logada
+    const nomeConta = "FernandoCaum"; // Substitua pelo nome real da conta logada
 
     // Atualiza o texto do campo com o ID "nome"
     const nomeElement = document.getElementById('nome');
